@@ -53,9 +53,11 @@ pipenv run init
 # Eliminar la base de datos `auto_agenda_taller_db` (si existe) y crearla de nuevo
 dropdb -h localhost -U gitpod auto_agenda_taller_db || true &&
 createdb -h localhost -U gitpod auto_agenda_taller_db || true
+# Contraseña: postgres
 
 # Agregar la extensión `unaccent` a la base de datos
 psql -h localhost -U gitpod -d auto_agenda_taller_db -c 'CREATE EXTENSION unaccent;' || true
+# Contraseña: postgres
 
 # Realizar las migraciones y aplicar las actualizaciones a la base de datos
 pipenv run migrate &&
@@ -64,6 +66,11 @@ pipenv run upgrade
 # Probar la conexión a la base de datos
 psql -h localhost -U gitpod -d auto_agenda_taller_db -W
 
+npm install bootstrap
+
+npm install antd
+
+npm install moment
 
 -----------------------------
 
