@@ -3,12 +3,32 @@ import React, { useState } from 'react';
 function AddCarModal({ onSave, onClose, error }) {
   const [newCar, setNewCar] = useState({ model: '', licensePlate: '' });
 
+  // Función para validar y formatear la placa de matrícula
+  const requireLicensePlate = (e) => {
+    const value = e.target.value.toUpperCase();
+    const regex = /^[0-9]{0,4}[A-Z]{0,3}$/;
+
+    if (regex.test(value)) {
+      setNewCar(prevState => ({
+        ...prevState,
+        licensePlate: value
+      }));
+    }
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setNewCar(prevState => ({
-      ...prevState,
-      [name]: value
-    }));
+
+    if (name === 'licensePlate') {
+      // Si se está cambiando la placa de matrícula, aplica la validación
+      requireLicensePlate(e);
+    } else {
+      // Para otros campos, como 'model', simplemente actualiza el estado
+      setNewCar(prevState => ({
+        ...prevState,
+        [name]: value
+      }));
+    }
   };
 
   const handleSave = () => {
