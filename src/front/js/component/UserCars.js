@@ -28,11 +28,15 @@ function UserCars() {
             ...store.corsEnabled // Deshabilitar una vez en producción
           },
         });
-        if (!getCarsUser.ok) {
-          throw new Error("Failed to load cars details");
+        if (getCarsUser.ok) {
+          const data = await getCarsUser.json();
+          setCars(data.result);
+        } else if (getCarsUser.status === 404) {
+          console.error("No cars found for user");
+          setCars([]); // Set an empty array if no cars are found
+        } else {
+          console.error("Failed to load cars details");
         }
-        const data = await getCarsUser.json();
-        setCars(data.result);
       } catch (error) {
         console.error("Failed to load", error);
       }
@@ -187,26 +191,34 @@ function UserCars() {
             </tr>
           </thead>
           <tbody>
-            {cars.map((car) => (
-              <tr key={car.id}>
-                <td>{car.car_model || "Unknown"}</td>
-                <td>{car.license_plate || "Unknown"}</td>
-                <td>
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => handleEditModalOpen(car)}
-                  >
-                    Edit
-                  </button>
-                  <button
-                    className="btn btn-danger ms-2"
-                    onClick={() => handleDeleteClick(car.id)}
-                  >
-                    Delete
-                  </button>
+            {cars.length === 0 ? (
+              <tr>
+                <td colSpan="3" className="text-center">
+                  No vehicles registered
                 </td>
               </tr>
-            ))}
+            ) : (
+              cars.map((car) => (
+                <tr key={car.id}>
+                  <td>{car.car_model || "Unknown"}</td>
+                  <td>{car.license_plate || "Unknown"}</td>
+                  <td>
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => handleEditModalOpen(car)}
+                    >
+                      Edit
+                    </button>
+                    <button
+                      className="btn btn-danger ms-2"
+                      onClick={() => handleDeleteClick(car.id)}
+                    >
+                      Delete
+                    </button>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
         </table>
       </div>

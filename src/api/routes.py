@@ -648,7 +648,7 @@ def get_slots_taken():
     return jsonify(slots), 200
 
 
-# ///////////////////////////////////////////////////////////////////////////////////////////// get a /update_profile
+# ///////////////////////////////////////////////////////////////////////////////////////////// PATCH a /update_profile
 @api.route('/update_profile', methods=['PATCH'])
 @jwt_required()
 def update_profile():
@@ -855,3 +855,4 @@ def add_test_data():
     db.session.commit()
 
     return jsonify({"msg": "Test data added successfully"}), 201
+

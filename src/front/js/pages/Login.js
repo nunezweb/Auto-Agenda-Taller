@@ -47,11 +47,9 @@ const Login = () => {
           navigate("/userdashboard");
         }
       } else {
-        // Aquí manejamos el mensaje de error devuelto por la función login
         setError(response.message || "Invalid email or password. Please try again.");
       }
     } catch (error) {
-      // Manejo de errores adicionales, como problemas de conexión
       console.error("Error al hacer login:", error);
       setError("An error occurred while trying to log in. Please try again later.");
     }
@@ -69,7 +67,6 @@ const Login = () => {
           </div>
           <div className="card-body">
             <form onSubmit={submitForm}>
-              {/* Mostrar el mensaje de error dentro del formulario */}
               {error && (
                 <div className="alert alert-danger" role="alert">
                   {error}
