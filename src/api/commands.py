@@ -38,8 +38,8 @@ from api.models import db, Role, User, Car, Service, Appointment, Comment, Setti
 from flask_bcrypt import Bcrypt
 from datetime import datetime
 
-def setup_commands(app):
-    bcrypt = Bcrypt(app)
+def insert_demo_data():
+    bcrypt = Bcrypt()
 
     @app.cli.command("insert-test-data")
     def insert_test_data():
