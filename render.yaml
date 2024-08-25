@@ -34,6 +34,8 @@ services:
           - key: CORS_ORIGIN
             value: "DISABLE"
 
+    postdeploycommand: "flask insert-test-data"
+
 databases: # Render PostgreSQL database
     - name: postgresql-autoagendatrapezoidal-432430
       region: ohio
