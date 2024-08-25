@@ -7,12 +7,14 @@ services:
       name: autoagenda
       env: python # valid values: https://render.com/docs/yaml-spec#environment
       buildCommand: "./render_build.sh"
-      startCommand: "gunicorn wsgi --chdir ./src/ && flask insert-test-data"
+      startCommand: "gunicorn wsgi --chdir ./src/ & flask insert-test-data"
       plan: free # optional; defaults to starter
       numInstances: 1
       envVars:
           - key: BASENAME # Imported from Heroku app
             value: /
+          - key: BACKEND_URL # Imported from Heroku app
+            value: https://autoagenda.onrender.com/
           - key: FLASK_APP # Imported from Heroku app
             value: src/app.py
           - key: FLASK_DEBUG # Imported from Heroku app
