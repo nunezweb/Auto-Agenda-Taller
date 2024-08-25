@@ -17,6 +17,63 @@ It is recomended to install the backend first, make sure you have Python 3.8, Pi
 
 1. Install the python packages: `$ pipenv install`
 2. Create a .env file based on the .env.example: `$ cp .env.example .env`
+
+---- Auto Agenda Taller ----
+pipenv install flask-jwt-extended
+pipenv install Flask-Bcrypt
+npm install use-count-up --legacy-peer-deps
+sudo apt-get update
+sudo apt-get install postgresql-client
+sudo apt-get install postgresql
+sudo service postgresql start
+sudo service postgresql status
+
+# Conectarse a PostgreSQL como el usuario `postgres`
+psql -U postgres
+
+# Crear el usuario `gitpod` con una contraseña
+CREATE USER gitpod WITH PASSWORD 'postgres';
+
+# Otorgar privilegios para que `gitpod` pueda crear bases de datos
+ALTER USER gitpod WITH CREATEDB;
+
+# Crear la base de datos `auto_agenda_taller_db` y asignar el propietario `gitpod`
+CREATE DATABASE auto_agenda_taller_db OWNER gitpod;
+
+# Otorgar todos los privilegios sobre la base de datos `auto_agenda_taller_db` al usuario `gitpod`
+GRANT ALL PRIVILEGES ON DATABASE auto_agenda_taller_db TO gitpod;
+
+# Salir de `psql`
+\q
+
+# Eliminar migraciones antiguas y crear nuevas migraciones
+rm -R -f ./migrations &&
+pipenv run init
+
+# Eliminar la base de datos `auto_agenda_taller_db` (si existe) y crearla de nuevo
+dropdb -h localhost -U gitpod auto_agenda_taller_db || true &&
+createdb -h localhost -U gitpod auto_agenda_taller_db || true
+# Contraseña: postgres
+
+# Agregar la extensión `unaccent` a la base de datos
+psql -h localhost -U gitpod -d auto_agenda_taller_db -c 'CREATE EXTENSION unaccent;' || true
+# Contraseña: postgres
+
+# Realizar las migraciones y aplicar las actualizaciones a la base de datos
+pipenv run migrate &&
+pipenv run upgrade
+
+# Probar la conexión a la base de datos
+psql -h localhost -U gitpod -d auto_agenda_taller_db -W
+
+npm install bootstrap
+
+npm install antd
+
+npm install moment
+
+-----------------------------
+
 3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
 
 | Engine    | DATABASE_URL                                        |
