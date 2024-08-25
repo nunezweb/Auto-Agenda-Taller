@@ -9,7 +9,6 @@ from flask_cors import CORS
 from datetime import datetime, timedelta, timezone
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
-from api.commands import insert_test_data
 
 
 app = Flask(__name__)
@@ -675,11 +674,3 @@ def update_profile():
     db.session.commit()
     return jsonify({"msg": "Profile updated successfully", "email": user.email}), 200
 
-@api.route('/run-insert-test-data', methods=['POST'])
-def run_insert_test_data():
-    try:
-        # Llama a la función que ejecuta el comando
-        insert_test_data()
-        return jsonify({"message": "Test data inserted successfully!"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
