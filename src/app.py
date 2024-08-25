@@ -11,7 +11,7 @@ from api.models import db, TokenBlockList
 from api.routes import api
 from api.admin import setup_admin
 from datetime import timedelta
-from api.commands import setup_commands
+from api.commands import setup_commands # Nuevo comando para importación
 
 # from models import Person
 

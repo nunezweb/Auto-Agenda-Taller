@@ -1,9 +1,6 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from api.commands import insert_test_data
-
-
 from flask import Flask, request, jsonify, Blueprint
 from api.models import db, User, Role, Car, Appointment, Service, Comment, Setting, TokenBlockList
 from api.utils import generate_sitemap, APIException
@@ -679,11 +676,3 @@ def update_profile():
 
     db.session.commit()
     return jsonify({"msg": "Profile updated successfully", "email": user.email}), 200
-
-@api.route('/run_demo_script', methods=['POST'])
-def run_demo_script():
-    try:
-        insert_test_data()
-        return jsonify({"message": "Demo data inserted successfully!"}), 200
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
