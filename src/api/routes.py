@@ -425,7 +425,7 @@ def create_setting():
 
 # ///////////////////////////////////////////////////////////////////////////////////////////// get a /settings 
 @api.route('/settings', methods=['GET'])
-@jwt_required()
+# @jwt_required()
 def get_setting():
     setting = Setting.query.first()
     if setting:
