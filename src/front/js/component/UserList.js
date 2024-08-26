@@ -144,8 +144,7 @@ function UserList() {
     day: '2-digit',
     hour: '2-digit',
     minute: '2-digit',
-    second: '2-digit',
-    hour12: false // Usa formato de 24 horas, pon `true` para formato de 12 horas
+    hour12: false
   };
 
   return (
