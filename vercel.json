@@ -1,0 +1,26 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "src/app.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/src/app.py"
+    }
+  ],
+  "env": {
+    "FLASK_APP_KEY": "IxjhQXoFAmlScz0bXAZL1UBkoch7Z2FlQVMg8PuzKtq0d1RvidmTD9JK34UJC2cy8R",
+    "FLASK_APP": "src/app.py",
+    "FLASK_DEBUG": "0",
+    "DEBUG": "FALSE",
+    "JWT_SECRET": "0uiP10YD1DjlHYpfIWPxJHDCRwzUzxlDOTC7oIPZHVR9a4ZQ8I8ZtgxARY9L1UrGSVFz9GXH7IBE1h6rrdCqDjQ1rhreEiU8ldMOrddugltJobhy8KaPgy5Zlp8YOf3jgOKz2VG1TTFX4Oc165QKd7",
+    "MYKEY": "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",
+    "CORS_ORIGIN": "DISABLE",
+    "BASENAME": "/",
+    "BACKEND_URL": "https://autoagenda.onrender.com/"
+  }
+}
