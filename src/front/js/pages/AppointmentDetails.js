@@ -175,7 +175,7 @@ const AppointmentDetails = () => {
               {comments.length > 0 ? (
                 comments.map((comment, index) => (
                   <li key={index} className="m-3">
-                    <strong>{comment.is_mechanic ? "Mechanic" : "Client"}:</strong> {comment.content} <small>({new Date(comment.timestamp).toLocaleString()})</small>
+                    <strong>{comment.is_mechanic ? "Mechanic" : "Mechanic"}:</strong> {comment.content} <small>({new Date(comment.timestamp).toLocaleString()})</small>
                   </li>
                 ))
               ) : (
