@@ -242,7 +242,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             body: JSON.stringify(SMSInfo),
           });
           if (response.ok) {
-            console.log("sms enviado con exito")
           }
         } catch (error) {
           console.error("Error:", error);

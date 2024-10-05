@@ -340,7 +340,6 @@ const BookAppointmentUnregisteredUser = () => {
       }
 
       const appointmentData = await submitAppointment.json();
-      // console.log("Appointment details:", appointmentData);
 
       const Sender = () => {
         const data = {

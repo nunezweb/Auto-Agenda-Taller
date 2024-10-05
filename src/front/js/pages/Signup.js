@@ -97,7 +97,6 @@ const Signup = () => {
 </html>`,
       };
 
-      // console.log("Data ready to send:", data);
       actions.SendMail(data);
     };
 
